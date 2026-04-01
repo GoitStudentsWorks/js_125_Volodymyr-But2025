@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/Progect_team-PlusUltra
+    "build": "vite build --base=/Progect-team-PlusUltra
 /",
     "preview": "vite preview"
   },
