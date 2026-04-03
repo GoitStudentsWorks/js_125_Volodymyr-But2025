@@ -1,0 +1,36 @@
+.furniture-category__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none; /* Прибираємо маркери, якщо не прибрали в reset */
+  padding: 0;
+}
+
+.furniture-category__item {
+  /* Замість max-width використовуй flex-basis для стабільності */
+  flex-basis: calc((100% - 16px) / 2);
+
+  height: 120px;
+
+  box-sizing: border-box; /* Важливо, щоб бордер не розширював картку */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 250ms ease;
+}
+
+.furniture-category__link {
+  display: flex; /* Зроби флексом, щоб текст був по центру */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; /* Щоб посилання займало всю висоту li */
+  text-align: center;
+  text-decoration: none;
+}
+
+.vsi-tovary {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../img/category/vsi-tovary.jpg');
+}
