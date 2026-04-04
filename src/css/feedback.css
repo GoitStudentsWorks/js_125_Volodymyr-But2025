@@ -1,6 +1,6 @@
 .feedback-title{
 font-weight: 700;
-font-size: 36px;
+
 color: #080c09;
 margin-bottom: 24px;
 line-height: 1.2;
@@ -47,7 +47,11 @@ gap: 24px;
 }
 
 @media screen and (min-width:1440px){
-.feedback-list-item {
+.feedback-title{
+font-size: 48px;
+}
+
+    .feedback-list-item {
     width: 421px;
      height: 220px;
     }
