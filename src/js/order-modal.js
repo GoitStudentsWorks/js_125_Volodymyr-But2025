@@ -47,6 +47,8 @@ formEl.addEventListener('submit', async e => {
         name: name.value,
         phone: phone.value,
         comment: comment.value,
+        modelId: "682f9bbf8acbdf505592ac36",
+  color: "#1212ca"
     };
 
     console.log(formData);
