@@ -1,6 +1,10 @@
 .feedback-title{
 font-weight: 700;
+<<<<<<< HEAD
 
+=======
+font-size: 36px;
+>>>>>>> 621e3931ec487432bb321cf75919c8b69e49de4e
 color: #080c09;
 margin-bottom: 24px;
 line-height: 1.2;
@@ -47,11 +51,15 @@ gap: 24px;
 }
 
 @media screen and (min-width:1440px){
+<<<<<<< HEAD
 .feedback-title{
 font-size: 48px;
 }
 
     .feedback-list-item {
+=======
+.feedback-list-item {
+>>>>>>> 621e3931ec487432bb321cf75919c8b69e49de4e
     width: 421px;
      height: 220px;
     }
