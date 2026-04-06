@@ -1,8 +1,12 @@
-import axios from "axios";
-import iziToast from "izitoast";
+﻿import axios from 'axios';
+import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 let formData = {};
+let orderContext = {
+  modelId: '682f9bbf8acbdf505592ac36',
+  color: '#1212ca',
+};
 
 const refs = {
   formEl: document.querySelector('.order-form'),
@@ -23,47 +27,43 @@ refs.phoneInput.addEventListener('input', () => {
   }
 
   digits = digits.slice(0, 12);
-
   refs.phoneInput.value = digits;
   toggleOrderButtonState();
 });
 
 refs.nameInput.addEventListener('input', toggleOrderButtonState);
-
-toggleOrderButtonState();
-
 refs.closeBtn.addEventListener('click', closeOrderModal);
-
-refs.backdropEl.addEventListener('click', e => {
-  if (e.target === refs.backdropEl) {
+refs.backdropEl.addEventListener('click', event => {
+  if (event.target === refs.backdropEl) {
     closeOrderModal();
   }
 });
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && refs.backdropEl.classList.contains('is-open')) {
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && refs.backdropEl.classList.contains('is-open')) {
     closeOrderModal();
   }
 });
 
-refs.formEl.addEventListener('submit', async e => {
-  e.preventDefault();
+refs.formEl.addEventListener('submit', async event => {
+  event.preventDefault();
 
-  const { name, phone, comment } = e.target.elements;
-
+  const { name, phone, comment } = event.target.elements;
   const validNumber = /^380\d{9}$/.test(phone.value);
+
   if (!validNumber) {
     iziToast.show({
-      message: 'Введіть номер у форматі 380XXXXXXXXX'
+      message: 'Введіть номер у форматі 380XXXXXXXXX',
     });
     return;
   }
 
   if (name.value.length === 1) {
     iziToast.show({
-      message: `Ім'я має складатись мінімум з 2 символів!`,
-      color: 'red'
+      message: "Ім'я має складатися мінімум з 2 символів!",
+      color: 'red',
     });
+    return;
   }
 
   const commentValue = commentValidator(comment.value);
@@ -72,51 +72,50 @@ refs.formEl.addEventListener('submit', async e => {
     name: name.value,
     phone: phone.value,
     comment: commentValue,
-    modelId: "682f9bbf8acbdf505592ac36",
-    color: "#1212ca"
+    modelId: orderContext.modelId,
+    color: orderContext.color,
   };
 
-  console.log(formData);
-
   try {
-    const response = await axios.post('https://furniture-store-v2.b.goit.study/api/orders', formData);
+    const response = await axios.post(
+      'https://furniture-store-v2.b.goit.study/api/orders',
+      formData
+    );
     const orderData = response.data;
 
-    console.log(orderData);
     iziToast.show({
-      message: `Ви замовили ${orderData.model}! 
-    Номер вашого замовлення ${orderData.orderNum}. 
-    Вже телефонуємно Вам!`,
-      color: 'green'
+      message: `Ви замовили ${orderData.model}! Номер вашого замовлення ${orderData.orderNum}. Вже телефонуємо Вам!`,
+      color: 'green',
     });
-    e.target.reset();
+
+    event.target.reset();
     toggleOrderButtonState();
     closeOrderModal();
   } catch (error) {
     console.log(error.message);
     iziToast.show({
-      message: `некорректні дані, будь ласка, перевірте ім'я і номер телефону!`,
-      color: 'red'
+      message: "Некоректні дані, будь ласка, перевірте ім'я і номер телефону!",
+      color: 'red',
     });
   }
 });
 
-function disableBodyScroll() {
-  document.body.style.overflow = 'hidden';
-}
-
-function enableBodyScroll() {
-  document.body.style.overflow = '';
-}
+toggleOrderButtonState();
+closeOrderModal();
 
 export function openOrderModal() {
   refs.backdropEl.classList.add('is-open');
-  disableBodyScroll();
+}
+
+export function setOrderModalContext(context = {}) {
+  orderContext = {
+    ...orderContext,
+    ...context,
+  };
 }
 
 function closeOrderModal() {
   refs.backdropEl.classList.remove('is-open');
-  enableBodyScroll();
 }
 
 function toggleOrderButtonState() {
@@ -134,5 +133,6 @@ function commentValidator(str) {
   while (str.length < 5) {
     str += ' ';
   }
+
   return str;
 }
