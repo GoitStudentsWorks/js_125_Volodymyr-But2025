@@ -1,5 +1,6 @@
 import axios from "axios"
 import iziToast from "izitoast";
+import 'izitoast/dist/css/iziToast.min.css';
 
 let formData = {};
 
@@ -11,61 +12,39 @@ phoneInput: document.getElementById('phone'),
 }
 
   refs.phoneInput.addEventListener('input', () => {
-    // прибираємо все, крім цифр
     let digits = refs.phoneInput.value.replace(/\D/g, '');
 
-    // якщо починається з 8 або 0 — приводимо до 380
     if (digits.startsWith('0')) {
       digits = '38' + digits;
     } else if (digits.startsWith('8')) {
       digits = '3' + digits;
       }
 
-    // обмежуємо до 12 цифр
     digits = digits.slice(0, 12);
 
       refs.phoneInput.value = digits;
   });
 
-// Функція для блокування скролювання
-function disableBodyScroll() {
-  document.body.style.overflow = 'hidden';
-}
 
-// Функція для дозволу скролювання
-function enableBodyScroll() {
-  document.body.style.overflow = '';
-}
-
-// Відкриття модального вікна
-export function openOrderModal() {
-  refs.backdropEl.classList.add('is-open');
-  disableBodyScroll();
-}
-
-// Закриття модального вікна
-function closeOrderModal() {
-  refs.backdropEl.classList.remove('is-open');
-  enableBodyScroll();
-}
-
-// Закриття при кліку на кнопку закриття
 refs.closeBtn.addEventListener('click', closeOrderModal);
 
-// Закриття при кліку на backdrop (за межами модального вікна)
 refs.backdropEl.addEventListener('click', (e) => {
   if (e.target === refs.backdropEl) {
     closeOrderModal();
   }
 });
 
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && refs.backdropEl.classList.contains('is-open')) {
+    closeOrderModal();
+  }
+});
+
 refs.formEl.addEventListener('submit', async e => {
     e.preventDefault();
-
       
     const { name, phone, comment } = e.target.elements;
 
-    // Перевірка номера телефону
     const validNumber = /^380\d{9}$/.test(phone.value);
     if (!validNumber) {
     e.preventDefault();
@@ -73,6 +52,13 @@ refs.formEl.addEventListener('submit', async e => {
     message: 'Введіть номер у форматі 380XXXXXXXXX'
 });
       return; 
+    }
+
+    if (name.value.length === 1) {
+        iziToast.show({ 
+            message: `Ім'я має бути мінімум 2 символи!`,
+            color: 'red'
+                });
     }
 
     const commentValue = commentValidator(comment.value);
@@ -95,7 +81,8 @@ refs.formEl.addEventListener('submit', async e => {
 iziToast.show({ 
     message: `Ви замовили ${orderData.model}! 
     Hомер замовлення ${orderData.orderNum}. 
-    Вже телефонуємо Вам 🫶`
+    Вже телефонуємо Вам 🫶`,
+    color: 'green'
                 });
     e.target.reset();
     closeOrderModal();
@@ -105,19 +92,36 @@ iziToast.show({
             e.preventDefault();
         console.log(error.message);
         iziToast.show({
-            message: `error`
+            message: `Некорректні дані, будь ласка, перевірте форму на помилки!`,
+            color: 'red'
                 });
 }
 });
 
-// Закриття при натисканні на ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && refs.backdropEl.classList.contains('is-open')) {
-    closeOrderModal();
-  }
-});
+
+function disableBodyScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function enableBodyScroll() {
+  document.body.style.overflow = '';
+}
+
+export function openOrderModal() {
+  refs.backdropEl.classList.add('is-open');
+  disableBodyScroll();
+}
+
+function closeOrderModal() {
+  refs.backdropEl.classList.remove('is-open');
+  enableBodyScroll();
+}
 
 function commentValidator(str) {
+    if (str.length > 256) {
+        return str.slice(0, 255);
+        
+    };
   while (str.length < 5) {
     str += ' ';
   }
