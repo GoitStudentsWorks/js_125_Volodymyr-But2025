@@ -3,39 +3,29 @@ import iziToast from "izitoast";
 
 let formData = {};
 
-const formEl = document.querySelector('.order-form');
-const backdropEl = document.querySelector('.order-backdrop');
-const closeBtn = document.querySelector('.modal-close-button');
-const phoneInput = document.getElementById('phone');
+const refs = {
+formEl: document.querySelector('.order-form'),
+backdropEl:document.querySelector('.order-backdrop'),
+closeBtn: document.querySelector('.modal-close-button'),
+phoneInput: document.getElementById('phone'),
+}
 
-  phoneInput.addEventListener('input', () => {
+  refs.phoneInput.addEventListener('input', () => {
     // прибираємо все, крім цифр
-    let digits = phoneInput.value.replace(/\D/g, '');
+    let digits = refs.phoneInput.value.replace(/\D/g, '');
 
     // якщо починається з 8 або 0 — приводимо до 380
     if (digits.startsWith('0')) {
       digits = '38' + digits;
     } else if (digits.startsWith('8')) {
       digits = '3' + digits;
-    }
+      }
 
     // обмежуємо до 12 цифр
     digits = digits.slice(0, 12);
 
-    phoneInput.value = digits;
+      refs.phoneInput.value = digits;
   });
-
-  // фінальна перевірка при сабміті
-//   phoneInput.form?.addEventListener('submit', (e) => {
-//     const valid = /^380\d{9}$/.test(phoneInput.value);
-//     if (!valid) {
-//       e.preventDefault();
-//       alert('Введіть номер у форматі 380XXXXXXXXX');
-//     }
-//   }
-//   );
-
-console.log(formEl);
 
 // Функція для блокування скролювання
 function disableBodyScroll() {
@@ -48,36 +38,49 @@ function enableBodyScroll() {
 }
 
 // Відкриття модального вікна
-function openModal() {
-  backdropEl.classList.add('is-open');
+export function openOrderModal() {
+  refs.backdropEl.classList.add('is-open');
   disableBodyScroll();
 }
 
 // Закриття модального вікна
-function closeModal() {
-  backdropEl.classList.remove('is-open');
+function closeOrderModal() {
+  refs.backdropEl.classList.remove('is-open');
   enableBodyScroll();
 }
 
 // Закриття при кліку на кнопку закриття
-closeBtn.addEventListener('click', closeModal);
+refs.closeBtn.addEventListener('click', closeOrderModal);
 
 // Закриття при кліку на backdrop (за межами модального вікна)
-backdropEl.addEventListener('click', (e) => {
-  if (e.target === backdropEl) {
-    closeModal();
+refs.backdropEl.addEventListener('click', (e) => {
+  if (e.target === refs.backdropEl) {
+    closeOrderModal();
   }
 });
 
-formEl.addEventListener('submit', async e => {
+refs.formEl.addEventListener('submit', async e => {
     e.preventDefault();
 
-    
+      
     const { name, phone, comment } = e.target.elements;
+
+    // Перевірка номера телефону
+    const validNumber = /^380\d{9}$/.test(phone.value);
+    if (!validNumber) {
+    e.preventDefault();
+      iziToast.show({ 
+    message: 'Введіть номер у форматі 380XXXXXXXXX'
+});
+      return; 
+    }
+
+    const commentValue = commentValidator(comment.value);
+
     formData = {
         name: name.value,
         phone: phone.value,
-        comment: comment.value,
+        comment: commentValue,
         modelId: "682f9bbf8acbdf505592ac36",
   color: "#1212ca"
     };
@@ -95,10 +98,11 @@ iziToast.show({
     Вже телефонуємо Вам 🫶`
                 });
     e.target.reset();
-    closeModal();
+    closeOrderModal();
     
 }
-catch (error) {
+    catch (error) {
+            e.preventDefault();
         console.log(error.message);
         iziToast.show({
             message: `error`
@@ -108,8 +112,14 @@ catch (error) {
 
 // Закриття при натисканні на ESC
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && backdropEl.classList.contains('is-open')) {
-    closeModal();
+  if (e.key === 'Escape' && refs.backdropEl.classList.contains('is-open')) {
+    closeOrderModal();
   }
 });
 
+function commentValidator(str) {
+  while (str.length < 5) {
+    str += ' ';
+  }
+  return str;
+}
