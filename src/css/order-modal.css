@@ -7,30 +7,34 @@
     visibility: hidden;
     pointer-events: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 999;
     display: flex;
     justify-content: center;
-    align-content: center;
-
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .order-modal-overlay {
-    min-width: 335px;
-    /* min-height: 703px; */
+    width: min(100%, 335px);
+    max-height: calc(100dvh - 40px);
     border-radius: 8px;
-    position: absolute;
-    /* transform: translate(-63%,3%); */
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    position: relative;
     padding: 64px 20px;
     background-color: #fff;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.order-backdrop::-webkit-scrollbar,
+.order-modal-overlay::-webkit-scrollbar {
+    display: none;
 }
 
 .is-open {
@@ -137,6 +141,7 @@
     color: #fff;
     margin-left: auto;
     margin-right: auto;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .order-button:hover, 
@@ -155,8 +160,14 @@
 } */
 
 @media (min-width: 768px) {
+    .order-backdrop {
+        align-items: center;
+        padding: 32px;
+    }
+
     .order-modal-overlay {
-        min-width: 704px;
+        width: min(100%, 704px);
+        max-height: calc(100dvh - 64px);
         padding: 64px 32px 32px;
     }
 
@@ -174,7 +185,7 @@
 @media (min-width: 1158px) {
     .order-modal-overlay {
         padding: 64px;
-        min-width: 866px;
+        width: min(100%, 866px);
     }
 
     .order-form input {
@@ -186,4 +197,8 @@
         width: 738px;
         height: 180px;
     }
+
+    /* .order-button {
+        margin-bottom: 64px;
+    } */
 }
