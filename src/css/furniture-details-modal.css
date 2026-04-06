@@ -92,17 +92,6 @@
 }
 
 .product-modal__rating {
-<<<<<<< HEAD
-  margin-bottom: 18px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: #111;
-}
-
-.product-modal__rating svg {
-  width: 16px;
-  height: 15px;
-=======
   display: flex;
   align-items: center;
   gap: 4px;
@@ -130,7 +119,6 @@
   fill: none;
   stroke: #111;
   stroke-width: 2;
->>>>>>> 621e3931ec487432bb321cf75919c8b69e49de4e
 }
 
 .product-modal__colors {
@@ -203,8 +191,6 @@
 .product-modal__btn:hover {
   background-color: #7f0b11;
 }
-<<<<<<< HEAD
-=======
 
 @media (min-width: 1440px) {
   .product-modal {
@@ -266,4 +252,3 @@
       inset 0 32px 24px 0 var(--opacity-white-5);
   }
 }
->>>>>>> 621e3931ec487432bb321cf75919c8b69e49de4e
