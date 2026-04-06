@@ -14,6 +14,7 @@
     color: #080c09;
 }
 
+<<<<<<< HEAD
 .review-card {
     background: #fff;
     border-radius: 8px;
@@ -24,6 +25,13 @@
 }
 
 .feedback-text {
+=======
+.feedback-slider {
+    padding-bottom: 48px;
+}
+
+.feedback-list-review {
+>>>>>>> main
     font-weight: 500;
     font-size: 20px;
     margin-bottom: 24px;
@@ -49,6 +57,7 @@
     .feedback-list-item {
         width: 341px;
         height: 254px;
+<<<<<<< HEAD
     }
 
 }
@@ -57,9 +66,13 @@
     .feedback-list-item {
         width: 421px;
         height: 220px;
+=======
+>>>>>>> main
     }
+
 }
 
+<<<<<<< HEAD
 
 
 
@@ -228,4 +241,11 @@
     right: 10px !important;
     bottom: 10px !important;
     top: auto !important;
+=======
+@media screen and (min-width:1440px) {
+    .feedback-list-item {
+        width: 421px;
+        height: 220px;
+    }
+>>>>>>> main
 }
