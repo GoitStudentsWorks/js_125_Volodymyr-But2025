@@ -19,14 +19,7 @@
         color: #080c09;
         font-family: "Raleway", sans-serif;
 }
-.feedback-text {
-    font-weight: 500;
-    font-size: 20px;
-    padding-bottom: 24px;
-    line-height: 1.6;
-    color: #080c09;
-    font-family:"Raleway",sans-serif;
-}
+
 
 .star-rating {
     display: flex;
@@ -36,15 +29,32 @@
 .icon-star.star-filled {
     fill: #080C09;
 }
+.navigation-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
 .review-card {
     background: #fff;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
     padding-bottom: 48px;
+    border: 1px solid #f3f3f3;
+    padding: 20px;
+    gap: 12px;
 }
 
+.feedback-text {
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 24px;
+    line-height: 1.6;
+    color: #080c09;
+    font-family: "Raleway", sans-serif;
+}
 .feedback-user-name {
     font-weight: 700;
     font-size: 16px;
@@ -52,12 +62,20 @@
     color: #080c09;
     
 }
-
-
-
 .reviews-controls {
+display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
     margin-top: 32px;
 
+}
+.reviews-swiper {
+    overflow: hidden;
+    padding-bottom: 60px;
+    position: relative;
+    align-items: flex-start;
+    gap: 24px
 }
 
 .feedback-btn {
@@ -65,9 +83,8 @@
     height: 48px;
     background-color: #ffffff;
     border: 1px solid #111111;
-    /* Колір рамки з макету */
+    
     border-radius: 50%;
-    /* Робимо круглу форму */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -75,18 +92,13 @@
     transition: all 0.3s ease;
     fill: #080C09;
 }
-
-/* Стилі для SVG всередині кнопок */
 .feedback-btn svg {
     fill: #080C09;
 }
 
 .feedback-btn:hover svg {
     stroke: #ffffff;
-    /* Стрілочка стає білою при наведенні */
 }
-
-/* Стан, коли кнопка неактивна (перший/останній слайд) */
 .feedback-btn:disabled,
 .swiper-button-disabled {
     opacity: 0.3;
@@ -96,27 +108,14 @@
 .controls-container {
     display: flex;
     justify-content: space-between;
-    /* Розносить елементи по краях */
     align-items: center;
     margin-top: 20px;
-    /* Відступ від карток */
     padding: 0 10px;
 }
 .swiper-container {
     position: relative;
     padding-bottom: 50px;
-    /* Місце для кнопок знизу */
 }
-
-.navigation-wrapper {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    display: flex;
-    gap: 10px;
-    
-}
-
 
 .feedback-swiper-pagination{
         position: absolute;
@@ -134,12 +133,6 @@
 .swiper-button-next,
 .swiper-button-prev {
     color: #000000 !important;
-}
-.reviews-swiper {
-    padding-bottom: 60px;
-    position: relative;
-    align-items: flex-start;
-    gap:24px
 }
 
 .feedback-page-desing {
@@ -161,4 +154,8 @@
     right: 10px ;
     bottom: 10px;
     top: auto !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: "";
 }
