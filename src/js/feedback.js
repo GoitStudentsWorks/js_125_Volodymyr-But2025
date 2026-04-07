@@ -35,21 +35,21 @@ function renderStarIcons(containers, rate) {
     
     if (i <= Math.floor(rate)) {
       starsMarkup += `
-        <svg class="icon-star star-filled" width="18" height="18">
+        <svg class="icon-star star-filled" width="20" height="20">
           <use href="./img/star-rating.icons.svg#star-filled"></use>
         </svg>`;
     } 
 
     else if (i - 0.5 === rate) {
       starsMarkup += `
-        <svg class="icon-star star-half" width="18" height="18">
+        <svg class="icon-star star-half" width="20" height="20">
           <use href="./img/star-rating.icons.svg#star-half"></use>
         </svg>`;
     } 
     
     else {
       starsMarkup += `
-        <svg class="icon-star star-empty" width="18" height="18">
+        <svg class="icon-star star-empty" width="20" height="20">
           <use href="./img/star-rating.icons.svg#star-empty"></use>
         </svg>`;
     }

@@ -4,14 +4,28 @@
     color: #080c09;
     margin-bottom: 24px;
     line-height: 1.2;
+    font-family: "Raleway", sans-serif;
 }
-
-.feedback-text {
+@media screen and (min-width:1440px){
+    .feedback-title{
+        font-size: 36px;
+    }
+}
+.feedback-text-first{
+    padding-bottom: 80px;
     font-weight: 400;
-    font-size: 18px;
-    margin-bottom: 80px;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #080c09;
+        font-family: "Raleway", sans-serif;
+}
+.feedback-text {
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 24px;
     line-height: 1.6;
     color: #080c09;
+    font-family:"Raleway",sans-serif;
 }
 
 .star-rating {
@@ -36,6 +50,7 @@
     font-size: 16px;
     line-height: 1.6;
     color: #080c09;
+    
 }
 
 
@@ -101,15 +116,7 @@
     gap: 10px;
     
 }
-.review-card {
-    background: #fff;
-    border: 1px solid #f3f3f3;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+
 
 .feedback-swiper-pagination{
         position: absolute;
@@ -128,34 +135,30 @@
 .swiper-button-prev {
     color: #000000 !important;
 }
-
 .reviews-swiper {
     padding-bottom: 60px;
     position: relative;
+    align-items: flex-start;
+    gap:24px
 }
 
-
 .feedback-page-desing {
-    text-align: left ;
-    left: 0 ;
+    text-align: left !important ;
+    left: 0 !important ;
     bottom: 10px ;
     width: auto ;
 }
 
-/*"Назад" */
 .feedback-desing-beack {
-    left: auto ;
-    top: auto;
-    right: 60px ;
-    
-    bottom: 10px ;
-    
+    left: auto !important;
+    top: auto !important;
+    right: 60px !important;
+    bottom: 10px !important; 
 }
 
-/* Кнопка "Вперед" */
 .feedback-desing-go {
-    left: auto;
+    left: auto !important;
     right: 10px ;
     bottom: 10px;
-    top: auto ;
+    top: auto !important;
 }
