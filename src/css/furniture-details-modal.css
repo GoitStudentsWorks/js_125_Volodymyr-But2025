@@ -189,12 +189,12 @@ body.modal-open {
   border: none;
 }
 
-.color-option input:checked + .color-swatch {
+.color-option input:checked+.color-swatch {
   border: 3px solid #8e8e88;
   box-shadow: inset 0 0 0 4px #f3f1eb;
 }
 
-.color-option input:checked + .color-swatch.color-swatch--dark {
+.color-option input:checked+.color-swatch.color-swatch--dark {
   border: 3px solid #8e8e88;
   box-shadow: inset 0 0 0 4px #221d1a;
 }
@@ -203,7 +203,7 @@ body.modal-open {
   transform: scale(1.05);
 }
 
-.color-option input:focus-visible + .color-swatch {
+.color-option input:focus-visible+.color-swatch {
   outline: 2px solid #980d14;
   outline-offset: 3px;
 }

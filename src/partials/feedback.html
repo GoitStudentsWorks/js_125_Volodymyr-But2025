@@ -1,25 +1,36 @@
 <section class="feedback" id="feedback">
   <div class="container">
-    <h1 class="feedback-title">Відгуки клієнтів</h1>
-    <p class="feedback-text">
+    <h2 class="feedback-title">Відгуки клієнтів</h2>
+    <p class="feedback-text-first">
       Дізнайтеся, що кажуть наші задоволені клієнти про нашу меблі.
     </p>
-    <div class="feedback-slider">
-      <ul class="feedback-list">
-        <li class="feedback-list-item">
-          <ul class="feedback-list-stars"></ul>
-          <p class="feedback-list-review">
-            “Дуже задоволена покупкою! Диван не тільки стильний, а й неймовірно
-            зручний. Доставка була швидкою, все без жодної подряпини.”
-          </p>
-          <p class="feedback-user">Олена Коваль</p>
-        </li>
-      
+
+    <div class="swiper reviews-swiper">
+      <div class="swiper-wrapper" id="reviews-container"></div>
+
+      <div class="reviews-controls">
+        <div class="swiper-pagination feedback-page-desing"></div>
+
+        <div class="swiper-buttons">
+          <button
+            type="button"
+            class="swiper-button-prev feedback-btn feedback-desing-beack"
+          >
+            <svg width="24" height="24">
+              <use href="./img/favicon.svg#icon-left-arrow-alt"></use>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="swiper-button-next feedback-btn feedback-desing-go"
+          >
+            <svg width="24" height="24">
+              <use href="./img/favicon.svg#icon-right-arrow-alt"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-
-    <button type="button" class="prev"></button>
-    <button type="button" class="next"></button>
-
-    <div class="pagination"></div>
   </div>
+  <script type="module" src="./js/feedback.js"></script>
 </section>
