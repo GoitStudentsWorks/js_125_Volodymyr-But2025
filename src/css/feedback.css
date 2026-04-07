@@ -1,57 +1,161 @@
-.feedback-title{
-font-weight: 700;
-font-size: 36px;
-color: #080c09;
-margin-bottom: 24px;
-line-height: 1.2;
+.feedback-title {
+    font-weight: 700;
+    font-size: 36px;
+    color: #080c09;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    font-family: "Raleway", sans-serif;
+}
+@media screen and (min-width:1440px){
+    .feedback-title{
+        font-size: 36px;
+    }
+}
+.feedback-text-first{
+    padding-bottom: 80px;
+    font-weight: 400;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #080c09;
+        font-family: "Raleway", sans-serif;
 }
 
-.feedback-text{
-font-weight: 400;
-font-size: 18px;
-margin-bottom: 80px;
-line-height: 1.6;
-color: #080c09;
+
+.star-rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+.icon-star.star-filled {
+    fill: #080C09;
+}
+.navigation-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+.review-card {
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
+    border: 1px solid #f3f3f3;
+    padding: 20px;
+    gap: 12px;
 }
 
-.feedback-slider{
-   padding-bottom: 48px; 
-}
-.feedback-list-review {
+.feedback-text {
     font-weight: 500;
     font-size: 20px;
-    margin-bottom: 24px;
+    padding-bottom: 24px;
     line-height: 1.6;
     color: #080c09;
+    font-family: "Raleway", sans-serif;
 }
-
-.feedback-user {
+.feedback-user-name {
     font-weight: 700;
     font-size: 16px;
     line-height: 1.6;
     color: #080c09;
+    
 }
-
-@media screen and (min-width:768px) {
-
-.feedback-list{
+.reviews-controls {
 display: flex;
-flex-direction: wrap;
-gap: 24px;
-}
-.feedback-list-item{
-    width: 341px;
-    height: 254px;
-}
+    align-items: center;
+    justify-content: space-between;
+  
+    margin-top: 32px;
 
 }
-
-@media screen and (min-width:1440px){
-.feedback-list-item {
-    width: 421px;
-     height: 220px;
-    }
+.reviews-swiper {
+    overflow: hidden;
+    padding-bottom: 60px;
+    position: relative;
+    align-items: flex-start;
+    gap: 24px
 }
 
+.feedback-btn {
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border: 1px solid #111111;
+    
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    fill: #080C09;
+}
+.feedback-btn svg {
+    fill: #080C09;
+}
 
+.feedback-btn:hover svg {
+    stroke: #ffffff;
+}
+.feedback-btn:disabled,
+.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: #cccccc;
+}
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+.swiper-container {
+    position: relative;
+    padding-bottom: 50px;
+}
 
+.feedback-swiper-pagination{
+        position: absolute;
+        text-align: center;
+        transition: 300ms opacity;
+        transform: translate3d(0, 0, 0);
+         z-index: 10;
+       
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #000000 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000000 !important;
+}
+
+.feedback-page-desing {
+    text-align: left !important ;
+    left: 0 !important ;
+    bottom: 10px ;
+    width: auto ;
+}
+
+.feedback-desing-beack {
+    left: auto !important;
+    top: auto !important;
+    right: 60px !important;
+    bottom: 10px !important; 
+}
+
+.feedback-desing-go {
+    left: auto !important;
+    right: 10px ;
+    bottom: 10px;
+    top: auto !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: "";
+}

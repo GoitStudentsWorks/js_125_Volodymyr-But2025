@@ -1,8 +1,13 @@
 import axios from "axios";
 import iziToast from "izitoast";
 import 'izitoast/dist/css/iziToast.min.css';
+import { lockBodyScroll, unlockBodyScroll } from './scroll-lock';
 
 let formData = {};
+let selectedProduct = {
+  modelId: "682f9bbf8acbdf505592ac36",
+  color: "#1212ca",
+};
 
 const refs = {
   formEl: document.querySelector('.order-form'),
@@ -49,46 +54,56 @@ document.addEventListener('keydown', e => {
 refs.formEl.addEventListener('submit', async e => {
   e.preventDefault();
 
+    refs.nameInput.classList.remove('input-error');
+    refs.phoneInput.classList.remove('input-error');
+
+    
   const { name, phone, comment } = e.target.elements;
 
-  const validNumber = /^380\d{9}$/.test(phone.value);
-  if (!validNumber) {
+    if (name.value.length === 1) {
+      refs.nameInput.classList.add('input-error');
     iziToast.show({
-      message: 'Введіть номер у форматі 380XXXXXXXXX'
+      message: `Ім'я має складатись мінімум з 2 символів!`,
+        color: 'red',
+       position: 'topCenter'
+    });
+      
+      return
+  }
+
+    const validNumber = /^380\d{9}$/.test(phone.value);
+    if (!validNumber) {
+      refs.phoneInput.classList.add('input-error');
+      iziToast.show({
+        color: 'red',
+          message: 'Введіть номер у форматі 380XXXXXXXXX',
+      position: 'topCenter'
     });
     return;
   }
-
-  if (name.value.length === 1) {
-    iziToast.show({
-      message: `Ім'я має складатись мінімум з 2 символів!`,
-      color: 'red'
-    });
-  }
-
+    
   const commentValue = commentValidator(comment.value);
 
   formData = {
     name: name.value,
     phone: phone.value,
     comment: commentValue,
-    modelId: "682f9bbf8acbdf505592ac36",
-    color: "#1212ca"
+    modelId: selectedProduct.modelId,
+    color: selectedProduct.color
   };
-
-  console.log(formData);
 
   try {
     const response = await axios.post('https://furniture-store-v2.b.goit.study/api/orders', formData);
     const orderData = response.data;
 
-    console.log(orderData);
     iziToast.show({
       message: `Ви замовили ${orderData.model}! 
     Номер вашого замовлення ${orderData.orderNum}. 
     Вже телефонуємно Вам!`,
-      color: 'green'
+        color: 'yellow',
+       position: 'bottomCenter'
     });
+      
     e.target.reset();
     toggleOrderButtonState();
     closeOrderModal();
@@ -96,33 +111,34 @@ refs.formEl.addEventListener('submit', async e => {
     console.log(error.message);
     iziToast.show({
       message: `некорректні дані, будь ласка, перевірте ім'я і номер телефону!`,
-      color: 'red'
+        color: 'red',
+       position: 'topCenter'
     });
   }
 });
 
-function disableBodyScroll() {
-  document.body.style.overflow = 'hidden';
-}
-
-function enableBodyScroll() {
-  document.body.style.overflow = '';
-}
-
 export function openOrderModal() {
   refs.backdropEl.classList.add('is-open');
-  disableBodyScroll();
+  lockBodyScroll();
+}
+
+export function setSelectedProduct(productData = {}) {
+  selectedProduct = {
+    ...selectedProduct,
+    ...productData,
+  };
 }
 
 function closeOrderModal() {
   refs.backdropEl.classList.remove('is-open');
-  enableBodyScroll();
+  unlockBodyScroll();
 }
 
 function toggleOrderButtonState() {
   const hasNameValue = refs.nameInput.value.trim() !== '';
   const hasPhoneValue = refs.phoneInput.value.trim() !== '';
-
+  refs.nameInput.classList.remove('input-error');
+  refs.phoneInput.classList.remove('input-error');
   refs.orderBtn.disabled = !(hasNameValue && hasPhoneValue);
 }
 
