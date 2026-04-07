@@ -11,7 +11,7 @@ import{a as y,S as U,N as G,P as Y,i as v,A as K}from"./assets/vendor-D7PREWqc.j
         </svg>`:r+=`
         <svg class="icon-star star-empty" width="20" height="20">
           <use href="../star-rating.icons.svg#star-empty"></use>
-        </svg>`;e.innerHTML=r}function te(e){const t=document.querySelector("#reviews-container"),r=review.map(({name:o,descr:n,rate:s})=>`
+        </svg>`;e.innerHTML=r}function te(e){const t=document.querySelector("#reviews-container"),r=e.map(({name:o,descr:n,rate:s})=>`
       <div class="swiper-slide review-card">
         <div class="star-rating" data-rating="${Q(s)}"></div>
         <p class="feedback-text">${n}</p>
