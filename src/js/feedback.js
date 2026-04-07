@@ -51,21 +51,25 @@ function renderStarIcons(containers, rate) {
     if (i <= Math.floor(rate)) {
       starsMarkup += `
         <svg class="icon-star star-filled" width="20" height="20">
-          <use href="./star-rating.icons.svg#star-filled"></use>
+
+          <use href="../star-rating.icons.svg#star-filled"></use>
+
         </svg>`;
     } 
 
     else if (i - 0.5 === rate) {
       starsMarkup += `
         <svg class="icon-star star-half" width="20" height="20">
-          <use href="./star-rating.icons.svg#star-half"></use>
+
+          <use href="../star-rating.icons.svg#star-half"></use>
+
         </svg>`;
     } 
     
     else {
       starsMarkup += `
         <svg class="icon-star star-empty" width="20" height="20">
-          <use href="./star-rating.icons.svg#star-empty"></use>
+          <use href="../star-rating.icons.svg#star-empty"></use>
         </svg>`;
     }
   }
@@ -73,7 +77,7 @@ function renderStarIcons(containers, rate) {
 }
 
 
-function renderReviews(review) {
+function renderReviews(reviews) {
   const container = document.querySelector('#reviews-container');
   const markup = review
     .map(({ name, descr, rate }) => {
@@ -102,10 +106,11 @@ function initSwiper() {
     observer: true,
     observeParents: true,
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 10,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
+      disabledClass: 'button-disabled'
     },
     pagination: {
       el: '.swiper-pagination',
@@ -122,8 +127,6 @@ function initSwiper() {
 export async function initFeedbacks() {
   try {
     const response = await axios.get('https://furniture-store-v2.b.goit.study/api/feedbacks');
-    
-   
     const data = response.data; 
 
     const feedbacksList = data.feedbacks; 
