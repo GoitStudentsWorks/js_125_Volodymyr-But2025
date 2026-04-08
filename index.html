@@ -1,11 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Меблерія</title>
+  <meta
+    name="description"
+    content="Меблерія — сучасний магазин меблів для дому та офісу: дивани, столи, ліжка, шафи, декор і зручне замовлення онлайн."
+  />
   <link
     rel="preload"
     as="image"
@@ -30,15 +34,15 @@
   <script type="module" crossorigin src="/Progect_team-PlusUltra/index.js"></script>
   <link rel="modulepreload" crossorigin href="/Progect_team-PlusUltra/assets/vendor-uxFXHuDx.js">
   <link rel="stylesheet" crossorigin href="/Progect_team-PlusUltra/assets/vendor-CrQbKdex.css">
-  <link rel="stylesheet" crossorigin href="/Progect_team-PlusUltra/assets/index-BLY7O6Zl.css">
+  <link rel="stylesheet" crossorigin href="/Progect_team-PlusUltra/assets/index-D9tfDTf_.css">
 </head>
 
 <body>
   <header class="header">
   <div class="container">
     <section class="header_logo_section">
-      <a href="index.html">
-        <img src="/Progect_team-PlusUltra/assets/header-logo-Drg3vIue.svg" alt="header-logo" width="104" height="32" decoding="async">
+      <a href="index.html" aria-label="Меблерія, на головну">
+        <img src="/Progect_team-PlusUltra/assets/header-logo-Drg3vIue.svg" alt="Меблерія" width="104" height="32" decoding="async">
       </a>
     </section>
     <nav class="nav">
@@ -51,12 +55,24 @@
       </ul>
 
       <section class="nav_burger_menu_section">
-        <svg class="header_burger_svg header_menu_svg" width="32" height="32">
-          <use href="./favicon.svg#icon-menu"></use>
-        </svg>
-        <svg class="header_burger_svg header_x_svg hide" width="32" height="32">
-          <use href="./favicon.svg#icon-x"></use>
-        </svg>
+        <button
+          type="button"
+          class="header_burger_btn header_menu_svg"
+          aria-label="Відкрити меню"
+        >
+          <svg class="header_burger_svg" width="32" height="32" aria-hidden="true">
+            <use href="./favicon.svg#icon-menu"></use>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="header_burger_btn header_x_svg hide"
+          aria-label="Закрити меню"
+        >
+          <svg class="header_burger_svg" width="32" height="32" aria-hidden="true">
+            <use href="./favicon.svg#icon-x"></use>
+          </svg>
+        </button>
       </section>
     </nav>
   </div>
@@ -79,6 +95,8 @@
       src="/Progect_team-PlusUltra/assets/mob-bg-1x-min-CId8YlDD.jpg"
       srcset="/Progect_team-PlusUltra/assets/mob-bg-1x-min-CId8YlDD.jpg 1x, /Progect_team-PlusUltra/assets/mob-bg-2x-min-CIuYeHXm.jpg 2x"
       alt=""
+      width="375"
+      height="430"
       fetchpriority="high"
       decoding="async"
     />
@@ -274,6 +292,8 @@
     src="/Progect_team-PlusUltra/assets/about-Cw4BbeRo.jpg"
     srcset="/Progect_team-PlusUltra/assets/about-Cw4BbeRo.jpg 1x, /Progect_team-PlusUltra/assets/about@2x-B9fAuoju.jpg 2x"
     alt="Furniture design team"
+    width="704"
+    height="450"
     loading="lazy"
     decoding="async"
   />
@@ -389,16 +409,18 @@
           <button
             type="button"
             class="swiper-button-prev feedback-btn feedback-desing-beack"
+            aria-label="Попередній відгук"
           >
-            <svg width="24" height="24">
+            <svg width="24" height="24" aria-hidden="true">
               <use href="/Progect_team-PlusUltra/assets/favicon-D546NqWa.svg#icon-left-arrow-alt"></use>
             </svg>
           </button>
           <button
             type="button"
             class="swiper-button-next feedback-btn feedback-desing-go"
+            aria-label="Наступний відгук"
           >
-            <svg width="24" height="24">
+            <svg width="24" height="24" aria-hidden="true">
               <use href="/Progect_team-PlusUltra/assets/favicon-D546NqWa.svg#icon-right-arrow-alt"></use>
             </svg>
           </button>
@@ -436,8 +458,9 @@
           class="social-link"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="YouTube"
         >
-          <svg width="24" height="24">
+          <svg width="24" height="24" aria-hidden="true">
             <use href="/Progect_team-PlusUltra/assets/icons-BB6I5U6w.svg#icon-youtube"></use>
           </svg>
         </a>
@@ -448,8 +471,9 @@
           class="social-link"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram"
         >
-          <svg width="24" height="24">
+          <svg width="24" height="24" aria-hidden="true">
             <use href="/Progect_team-PlusUltra/assets/icons-BB6I5U6w.svg#icon-instagram"></use>
           </svg>
         </a>
@@ -460,8 +484,9 @@
           class="social-link"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Facebook"
         >
-          <svg width="24" height="24">
+          <svg width="24" height="24" aria-hidden="true">
             <use href="/Progect_team-PlusUltra/assets/icons-BB6I5U6w.svg#icon-facebook"></use>
           </svg>
         </a>
@@ -483,7 +508,7 @@
 
   <div class="product-modal__content">
     <div class="product-modal__gallery">
-      <img alt="" class="product-modal__main-image" />
+      <img alt="" class="product-modal__main-image" width="536" height="308" />
 
       <div class="product-modal__thumbnails"></div>
     </div>
@@ -564,8 +589,8 @@
 
   <div class="order-backdrop">
   <div class="order-modal-overlay">
-    <button type="button" class="modal-close-button">
-      <svg class="close-button" width="32" height="32">
+    <button type="button" class="modal-close-button" aria-label="Закрити форму замовлення">
+      <svg class="close-button" width="32" height="32" aria-hidden="true">
         <use href="./favicon.svg#icon-x"></use>
       </svg>
     </button>
