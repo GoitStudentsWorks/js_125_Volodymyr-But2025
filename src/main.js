@@ -8,7 +8,7 @@ import { getFurnitures } from './js/api';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed');
+  
 
   // Викликаємо ініціалізацію акордеона
   initAccordion();
