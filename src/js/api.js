@@ -13,28 +13,48 @@ export async function getCategories() {
     // console.error('Error fetching categories:', error);
     iziToast.show({
       message: `Error fetching categories: ${error}`,
-        color: 'red',
-       position: 'topCenter'
+      color: 'red',
+      position: 'topCenter',
     });
     return [];
   }
 }
 
-export async function getFurnitures({ page = 1, limit = 8, category = '' } = {}) {
-  const { data } = await axios.get(furnituresUrl, {
-    params: {
-      page,
-      limit,
-      ...(category ? { category } : {}),
-    },
-  });
+export async function getFurnitures({
+  page = 1,
+  limit = 8,
+  category = '',
+} = {}) {
+  try {
+    const { data } = await axios.get(furnituresUrl, {
+      params: {
+        page,
+        limit,
+        ...(category ? { category } : {}),
+      },
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    iziToast.show({
+      message: `Error fetching categories: ${error}`,
+      color: 'red',
+      position: 'topCenter',
+    });
+  }
 }
 
 export async function getFurnitureById(id) {
-  const { data } = await axios.get(`${furnituresUrl}/${id}`);
-  return data;
+  try {
+    const { data } = await axios.get(`${furnituresUrl}/${id}`);
+    return data;
+  } catch (error) {
+    iziToast.show({
+      message: `Error fetching furniture by ID: ${error}`,
+      color: 'red',
+      position: 'topCenter',
+    });
+  }
 }
 
 export async function getFeedbacks() {
