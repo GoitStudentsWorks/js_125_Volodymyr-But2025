@@ -16,7 +16,7 @@ export async function getCategories() {
     // console.error('Error fetching categories:', error);
     hideLoaderCategory();
     iziToast.show({
-      message: `Error fetching categories: ${error}`,
+      message: `Не вдалося завантажити дані. Перевірте з'єднання та спробуйте знову`,
       color: 'red',
       position: 'topCenter',
     });
@@ -41,7 +41,7 @@ export async function getFurnitures({
     return data;
   } catch (error) {
     iziToast.show({
-      message: `Error fetching categories: ${error}`,
+      message: `Не вдалося завантажити дані. Перевірте з'єднання та спробуйте знову`,
       color: 'red',
       position: 'topCenter',
     });
@@ -54,7 +54,7 @@ export async function getFurnitureById(id) {
     return data;
   } catch (error) {
     iziToast.show({
-      message: `Error fetching furniture by ID: ${error}`,
+      message: `Не вдалося завантажити дані. Перевірте з'єднання та спробуйте знову`,
       color: 'red',
       position: 'topCenter',
     });
