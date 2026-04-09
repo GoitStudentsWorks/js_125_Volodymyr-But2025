@@ -134,7 +134,7 @@ async function fetchFeedbacks() {
     } else {
       // console.error("Масив не знайдено в data.feedbacks:", data);
       iziToast.show({
-        message: `Масив не знайдено в data.feedbacks: ${data}`,
+        message: `Не вдалося завантажити дані. Перевірте з'єднання та спробуйте знову`,
         color: 'red',
         position: 'topCenter',
       });
@@ -145,7 +145,7 @@ async function fetchFeedbacks() {
     hideLoaderFeedback();
     // console.error("Помилка при отриманні відгуків:", error);
     iziToast.show({
-      message: `Помилка при отриманні відгуків: ${error}`,
+      message: `Не вдалося завантажити дані. Перевірте з'єднання та спробуйте знову`,
       color: 'red',
       position: 'topCenter',
     });
